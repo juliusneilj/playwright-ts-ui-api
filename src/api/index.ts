@@ -1,0 +1,1 @@
+export { default as PokemonAPI } from './pokemon-api';
