@@ -33,6 +33,7 @@
     "paths": {
       "@core": ["src/core/index.ts"],
       "@ui-pages": ["src/ui/pages/index.ts"],
+      "@ui-locators": ["src/ui/locators/index.ts"],
       "@apis": ["src/api/index.ts"],
       "@custom-types": ["src/types/index.ts"],
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */

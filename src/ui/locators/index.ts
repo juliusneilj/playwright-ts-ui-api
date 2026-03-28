@@ -1,0 +1,1 @@
+export { default as HomePageLocators } from './home-page.locators';
