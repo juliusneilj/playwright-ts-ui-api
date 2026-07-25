@@ -1,4 +1,4 @@
-export default class HomePageLocators {
+export default class ProductPageLocators {
     // Main heading
     static readonly MAIN_HEADING: string = 'h1:first-of-type';
     
@@ -20,6 +20,10 @@ export default class HomePageLocators {
     // APIs list button
     static readonly APIS_BUTTON: string = 'button:has-text("APIs list for practice")';
 
-    // Home Page sections
-    static readonly FEATURED_ITEMS_SECTION: string = 'div.features_items';
+    // Product Page sections
+    static readonly ALL_PRODUCTS_SECTION: string = 'div.features_items';
+
+    // Product Page elements
+    static readonly productContainer: (productName: string) => string = (productName: string) => `div.single-products:has-text("${productName}")`;
+    static readonly addToCartButton: (productName: string) => string = (productName: string) => `${ProductPageLocators.productContainer(productName)} button:has-text("Add to cart")`;
 }
