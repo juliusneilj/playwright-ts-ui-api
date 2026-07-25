@@ -1,4 +1,4 @@
-import test, { APIRequestContext, expect } from "@playwright/test";
+import test, { APIResponse, expect } from "@playwright/test";
 import { PokemonAPI } from "@apis";
 
 test.describe('Poke API Tests', () => {
@@ -9,7 +9,7 @@ test.describe('Poke API Tests', () => {
     })
 
     test('Get Pokemon by id', async () => {
-        const response = await pokemonAPI.getPokemonById(36);
+        const response: APIResponse = await pokemonAPI.getPokemonById(36);
         console.log(await response.json());
         expect(response.status()).toEqual(200);
     })
