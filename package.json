@@ -10,8 +10,8 @@
     "test:headed": "npx playwright test --project=chromium --headed",
     "test:report": "npx playwright show-report",
     "test:ci": "npx playwright test --reporter=line,html,junit --project=chromium --project=api",
-    "prepare": "npx playwright install",
-    "allure-generate": "npx allure generate --clean ./allure-results/ -o ./allure-report/ && npx allure open ./allure-report"
+    "test:allure-generate": "npx allure generate --clean ./allure-results/ -o ./allure-report/ && npx allure open ./allure-report",
+    "prepare": "npx playwright install"
   },
   "keywords": [],
   "author": "",
