@@ -16,6 +16,7 @@ export default class HomePage extends BasePage {
 
     async navigateTo(): Promise<void> {
         await this.page.goto(this.baseUrl);
+        await this.handlePopupsBeforeAction();
     }
 
     async verifyHomePage(): Promise<void> {
