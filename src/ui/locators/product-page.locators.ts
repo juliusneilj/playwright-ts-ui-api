@@ -22,8 +22,10 @@ export default class ProductPageLocators {
 
     // Product Page sections
     static readonly ALL_PRODUCTS_SECTION: string = 'div.features_items';
+    static readonly MODAL_CONTENT: string = '.modal-content';
+    static readonly MODAL_VIEW_CART: string = '.modal-body a[href="/view_cart"]';
 
     // Product Page elements
-    static readonly productContainer: (productName: string) => string = (productName: string) => `div.single-products:has-text("${productName}")`;
-    static readonly addToCartButton: (productName: string) => string = (productName: string) => `${ProductPageLocators.productContainer(productName)} button:has-text("Add to cart")`;
+    static readonly productContainer: (productName: string) => string = (productName: string) => `div.features_items .single-products:has-text("${productName}")`;
+    static readonly addToCartButton: string = '.add-to-cart';
 }
