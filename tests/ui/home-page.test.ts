@@ -1,35 +1,18 @@
-import { test } from "playwright/test";
-import { HomePage } from "@ui-pages";
+import { test } from '@fixtures';
 
-test.describe("Automation Exercise Home Page", () => {
-    let homePage: HomePage;
-
-    test.beforeEach(async ({ page }) => {
-        homePage = new HomePage(page);
-        await homePage.init();
-    });
-
-    test("Should navigate to automationexercise.com and verify home page", async () => {
-        // Step 1: Navigate to automationexercise.com
-        await homePage.navigateTo();    
-
-        // Step 2: Verify we are on the home page
+test.describe('Automation Exercise UI - home page', () => {
+    test('@smoke should load the homepage and validate key navigation elements', async ({ homePage }) => {
+        await homePage.navigateTo();
         await homePage.verifyHomePage();
     });
 
-    test("Should verify Featured Items section is visible on the home page", async () => {
-        // Step 1: Navigate to automationexercise.com
-        await homePage.navigateTo();    
-
-        // Step 2: Verify we are on the home page
+    test('should display the featured products section when the homepage loads', async ({ homePage }) => {
+        await homePage.navigateTo();
         await homePage.verifyFeaturedItemsSection();
     });
 
-    test("Should verify products are available in the Featured Items section", async () => {
-        // Step 1: Navigate to automationexercise.com
-        await homePage.navigateTo();    
-
-        // Step 2: Verify we are on the home page
+    test('should show at least one product card in the featured items section', async ({ homePage }) => {
+        await homePage.navigateTo();
         await homePage.verifyFeaturedItemsSection();
     });
 });
