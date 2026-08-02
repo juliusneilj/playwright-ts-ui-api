@@ -1,265 +1,182 @@
-# Playwright TypeScript UI & API Testing Framework
+# Playwright TypeScript UI & API Automation Framework
 
-A comprehensive testing framework built with Playwright and TypeScript that supports both UI and API testing with a well-structured architecture.
+A modern test automation project designed to validate both UI workflows and REST API behavior using Playwright and TypeScript. This framework is structured to demonstrate professional automation practices suitable for QA automation portfolio work and real-world testing roles.
 
-## 🚀 Features
+## Project purpose
 
-- **Dual Testing Approach**: Both UI and API testing capabilities
-- **TypeScript Support**: Full TypeScript implementation with type safety
-- **Cross-Browser Testing**: Support for Chromium, Firefox, and WebKit
-- **Page Object Model**: Structured UI testing with page objects and locators
-- **API Testing**: Dedicated API testing with base classes and utilities
-- **Allure Reporting**: Comprehensive test reporting with Allure
-- **Parallel Execution**: Tests run in parallel for faster execution
-- **Environment Configuration**: Flexible environment setup with dotenv
-- **CI/CD Ready**: Configured for continuous integration
+This repository showcases:
 
-## 📁 Project Structure
+- UI automation for a public web application
+- API verification for external REST endpoints
+- Cross-browser execution with Playwright
+- Reusable POM-based page abstractions
+- Environment-driven configuration
+- Automated reporting through HTML and Allure
+- CI execution through GitHub Actions
 
-```
+## Architecture overview
+
+```text
 playwright-ts-ui-api/
+├── .github/
+│   └── workflows/
+│       └── playwright.yml
 ├── src/
-│   ├── api/                    # API testing modules
-│   │   ├── index.ts
-│   │   └── pokemon-api.ts      # Pokemon API implementation
-│   ├── core/                   # Core base classes
-│   │   ├── base-api.ts         # Base API class
-│   │   ├── base-page.ts        # Base page class
+│   ├── api/
+│   │   ├── automation-exercise-api.ts
+│   │   ├── pokemon-api.ts
 │   │   └── index.ts
-│   ├── fixtures/               # Test fixtures
+│   ├── core/
+│   │   ├── base-api.ts
+│   │   ├── base-page.ts
+│   │   └── index.ts
+│   ├── fixtures/
 │   │   ├── base-fixtures.ts
 │   │   └── index.ts
-│   ├── types/                  # TypeScript type definitions
-│   │   ├── api-request.ts
-│   │   └── index.ts
-│   └── ui/                     # UI testing modules
-│       ├── locators/           # Element locators
-│       └── pages/              # Page object models
-│           ├── login-page.ts
-│           └── index.ts
+│   ├── ui/
+│   │   ├── locators/
+│   │   └── pages/
+│   └── types/
 ├── tests/
-│   ├── api/                    # API test specifications
-│   │   └── pokemon-api.spec.ts
-│   └── ui/                     # UI test specifications
-│       ├── demo-todo-app.spec.ts
-│       └── example.spec.ts
-├── .github/
-│   └── pull_request_template.md
-├── allure-report/              # Generated Allure reports
-├── allure-results/             # Allure test results
-├── coverage/                   # Test coverage reports
-├── playwright-report/          # Playwright HTML reports
-├── test-results/               # Test execution results
-├── .env                        # Environment variables
-├── .gitignore
+│   ├── api/
+│   └── ui/
+├── .env.example
 ├── package.json
-├── playwright.config.ts        # Playwright configuration
-└── tsconfig.json              # TypeScript configuration
+├── playwright.config.ts
+├── tsconfig.json
+├── README.md
+├── TEST_DASHBOARD.md
+└── allure-results/
 ```
 
-## 🛠️ Prerequisites
+### Design principles
 
-- Node.js (version 14 or higher)
-- npm or yarn package manager
+- Page Object Model for maintainable UI steps
+- API service classes for reusable request logic
+- Base classes to centralize setup and common behavior
+- Fixtures for consistent test context
+- Environment configuration for portability across environments
 
-## 📦 Installation
+## Tech stack
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd playwright-ts-ui-api
-```
+- Playwright
+- TypeScript
+- Node.js
+- HTML report
+- Allure report
+- GitHub Actions
 
-2. Install dependencies:
+## Setup
+
+### 1. Install dependencies
+
 ```bash
 npm install
 ```
 
-3. Install Playwright browsers:
+### 2. Install browsers
+
 ```bash
 npx playwright install
 ```
 
-4. Set up environment variables:
+### 3. Configure environment variables
+
 ```bash
 cp .env.example .env
-# Edit .env file with your configuration
 ```
 
-## 🔧 Configuration
-
-### Environment Variables
-
-Create a `.env` file in the root directory with the following variables:
+Then validate the variables:
 
 ```env
 POKEMON_API_BASE_URL=https://pokeapi.co/api/v2/
-# Add other environment variables as needed
+AUTOMATION_EXERCISE_BASE_URL=https://automationexercise.com/
 ```
 
-### Playwright Configuration
+## Run tests
 
-The project is configured to run tests across multiple browsers and environments:
+Run the full suite:
 
-- **UI Tests**: Run on Chromium, Firefox, and WebKit
-- **API Tests**: Run with configurable base URL
-- **Parallel Execution**: Enabled for faster test execution
-- **Reporting**: Multiple reporters including HTML, Allure, and JUnit
-
-## 🧪 Running Tests
-
-### Run All Tests
 ```bash
-npx playwright test
+npm test
 ```
 
-### Run UI Tests Only
+Run UI tests only:
+
 ```bash
-npx playwright test --project=chromium
-npx playwright test --project=firefox
-npx playwright test --project=webkit
+npm run test:ui
 ```
 
-### Run API Tests Only
+Run API tests only:
+
 ```bash
-npx playwright test --project=api
+npm run test:api
 ```
 
-### Run Tests in Headed Mode
+Run smoke tests:
+
 ```bash
-npx playwright test --headed
+npm run test:smoke
 ```
 
-### Run Tests in Debug Mode
+Open the HTML report:
+
 ```bash
-npx playwright test --debug
+npm run test:report
 ```
 
-### Run Specific Test File
-```bash
-npx playwright test tests/api/pokemon-api.spec.ts
-npx playwright test tests/ui/example.spec.ts
-```
+Generate Allure report:
 
-## 📊 Test Reporting
-
-### HTML Report
-```bash
-npx playwright show-report
-```
-
-### Allure Report
 ```bash
 npm run allure-generate
 ```
 
-This will generate and open an Allure report with detailed test results, including:
-- Test execution timeline
-- Failed test screenshots
-- Test step details
-- Environment information
+## Sample test coverage
 
-## 🏗️ Architecture
+### UI workflow coverage
 
-### Base Classes
+- Home page loads successfully
+- Featured products section is visible
+- Products page renders and is navigable
+- Product can be added to cart
+- Cart contains the selected product
 
-- **BaseAPI**: Foundation for all API testing classes with common HTTP methods
-- **BasePage**: Foundation for all page object classes with common page interactions
-- **BaseFixtures**: Common test fixtures and setup utilities
+### API coverage
 
-### API Testing
+- Successful GET request to a product listing endpoint
+- Valid response payload validation
+- Pokémon lookup by ID
+- Status code and response schema checks
 
-The framework includes a structured approach to API testing:
+## Reporting and CI
 
-```typescript
-// Example: Pokemon API testing
-const pokemonAPI = new PokemonAPI();
-const response = await pokemonAPI.getPokemonById(36);
-expect(response.status()).toEqual(200);
-```
+This repository includes both local reporting and GitHub Actions integration.
 
-### UI Testing
+- HTML report generated by Playwright
+- JUnit output for CI readability
+- Allure reporting for richer visual summaries
+- GitHub Actions workflow for automated execution on push and pull request
 
-Page Object Model implementation for maintainable UI tests:
+See [.github/workflows/playwright.yml](.github/workflows/playwright.yml) and [TEST_DASHBOARD.md](TEST_DASHBOARD.md) for the execution summary.
 
-```typescript
-// Example: Using page objects
-const loginPage = new LoginPage(page);
-await loginPage.login(username, password);
-```
+## Example test results summary
 
-## 🔍 Test Examples
+The framework is designed to provide practical automation evidence, including:
 
-### API Test Example
-```typescript
-test('Get Pokemon by id', async () => {
-    const pokemonAPI = new PokemonAPI();
-    const response = await pokemonAPI.getPokemonById(36);
-    expect(response.status()).toEqual(200);
-});
-```
+- browser-level verification across Chromium, Firefox, and WebKit
+- API status validation
+- end-to-end cart flow checks
+- reusable, maintainable test structure
 
-### UI Test Example
-```typescript
-test('has title', async ({ page }) => {
-    await page.goto('https://playwright.dev/');
-    await expect(page).toHaveTitle(/Playwright/);
-});
-```
+## Portfolio value
 
-## 🚀 CI/CD Integration
+This project demonstrates a solid automation portfolio pattern for:
 
-The project is configured for CI/CD with:
+- junior to mid-level QA automation roles
+- software testing positions with UI/API focus
+- modern Playwright-based automation work
+- CI-integrated test execution pipelines
 
-- Retry logic for flaky tests
-- Parallel execution optimization
-- Multiple report formats (HTML, JUnit, Allure)
-- Environment-specific configurations
+## License
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/new-feature`
-3. Make your changes and add tests
-4. Run tests to ensure they pass: `npm test`
-5. Commit your changes: `git commit -am 'Add new feature'`
-6. Push to the branch: `git push origin feature/new-feature`
-7. Submit a pull request
-
-## 📝 Best Practices
-
-- Follow the Page Object Model for UI tests
-- Use TypeScript types for better code maintainability
-- Write descriptive test names and descriptions
-- Keep tests independent and atomic
-- Use appropriate wait strategies
-- Implement proper error handling
-- Maintain consistent code formatting
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **Browser Installation**: If tests fail to run, ensure browsers are installed:
-   ```bash
-   npx playwright install
-   ```
-
-2. **Environment Variables**: Verify `.env` file is properly configured
-
-3. **Port Conflicts**: Ensure no other services are running on required ports
-
-4. **Dependencies**: Update dependencies if encountering version conflicts:
-   ```bash
-   npm update
-   ```
-
-## 📚 Resources
-
-- [Playwright Documentation](https://playwright.dev/)
-- [TypeScript Documentation](https://www.typescriptlang.org/)
-- [Allure Reporting](https://docs.qameta.io/allure/)
-
-## 📄 License
-
-This project is licensed under the ISC License.
+ISC
