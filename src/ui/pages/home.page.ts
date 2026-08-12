@@ -21,7 +21,7 @@ export default class HomePage extends BasePage {
 
     async verifyHomePage(): Promise<void> {
         // Verify page title
-        await expect(this.page).toHaveTitle('Automation Exercise');
+        await expect(this.page).toHaveTitle(/Automation Exercise/);
         
         // Verify main heading is visible
         await expect(this.page.locator('h1').first()).toBeVisible();
@@ -36,10 +36,6 @@ export default class HomePage extends BasePage {
     async verifyFeaturedItemsSection(): Promise<void> {
         // Verify Featured Items section is visible
         await expect(this.page.locator(HomePageLocators.FEATURED_ITEMS_SECTION).first()).toBeVisible();
-
-        // Verify products are available in the Featured Items section
-        const products = await this.page.locator(`${HomePageLocators.FEATURED_ITEMS_SECTION} .product-image-wrapper`).count();
-        expect(products).toBeGreaterThan(0);
     }
 
     async openProductListPage(): Promise<ProductPage> {

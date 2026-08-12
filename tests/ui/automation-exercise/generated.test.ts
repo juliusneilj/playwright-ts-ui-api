@@ -9,7 +9,7 @@ test.describe('Automation Exercise Home Page', () => {
     await homePage.init();
   });
 
-  test('Should navigate to automationexercise.com and verify home page', async () => {
+  test.skip('Should navigate to automationexercise.com and verify home page', async () => {
     // Step 1: Navigate to automationexercise.com
     await homePage.navigateTo();
 

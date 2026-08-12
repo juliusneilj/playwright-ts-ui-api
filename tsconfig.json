@@ -37,6 +37,7 @@
       "@ui-locators": ["src/ui/locators/index.ts"],
       "@apis": ["src/api/index.ts"],
       "@fixtures": ["src/fixtures/index.ts"],
+      "@fixtures/*": ["src/fixtures/*"],
       "@custom-types": ["src/types/index.ts"],
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
