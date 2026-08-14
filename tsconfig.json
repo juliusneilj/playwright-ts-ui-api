@@ -33,8 +33,11 @@
     "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     "paths": {
       "@core": ["src/core/index.ts"],
-      "@ui-pages": ["src/ui/pages/index.ts"],
-      "@ui-locators": ["src/ui/locators/index.ts"],
+      "@automation-exercise-ui-pages": ["src/ui/automation-exercise/pages/index.ts"],
+      "@retail-website-ui-pages": ["src/ui/retail-website/pages/index.ts"],
+      "@retail-website-ui-components": ["src/ui/retail-website/components/index.ts"],
+      "@automation-exercise-locators": ["src/ui/automation-exercise/locators/index.ts"],
+      "@retail-website-locators": ["src/ui/retail-website/locators/index.ts"],
       "@apis": ["src/api/index.ts"],
       "@fixtures": ["src/fixtures/index.ts"],
       "@fixtures/*": ["src/fixtures/*"],
