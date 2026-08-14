@@ -1,4 +1,4 @@
-name: All Tests
+name: API Tests
 
 on:
   # push:
@@ -33,7 +33,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright suite
-        run: npx playwright test --project=chromium --project=api
+        run: npx playwright test --project=api
 
       - name: Upload HTML report
         if: always()
