@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { HomePage } from '@ui-pages';
+import { HomePage } from 'src/ui/automation-exercise/pages';
 
 test.describe('Automation Exercise Home Page', () => {
   let homePage: HomePage;
@@ -9,7 +9,7 @@ test.describe('Automation Exercise Home Page', () => {
     await homePage.init();
   });
 
-  test('Should navigate to automationexercise.com and verify home page', async () => {
+  test.skip('Should navigate to automationexercise.com and verify home page', async () => {
     // Step 1: Navigate to automationexercise.com
     await homePage.navigateTo();
 

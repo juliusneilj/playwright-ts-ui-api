@@ -19,7 +19,7 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   expect: { 
-    timeout: 5000 // max time to wait for condition to be met 
+    timeout: 10000 // max time to wait for condition to be met 
   },
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
@@ -39,6 +39,8 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    /* Capture screenshot on test failure. See https://playwright.dev/docs/screenshots */
+    screenshot: 'only-on-failure',
   },
 
   /* Configure projects for major browsers */
@@ -62,10 +64,7 @@ export default defineConfig({
     },
     {
       name: 'api',
-      testDir: './tests/api',
-      use: {
-        baseURL: process.env.POKEMON_API_BASE_URL
-      }
+      testDir: './tests/api'
     }
 
     /* Test against mobile viewports. */

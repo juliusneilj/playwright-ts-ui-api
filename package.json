@@ -3,19 +3,26 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "allure-generate": "npx allure generate --clean ./allure-results/ -o ./allure-report/ && allure open ./allure-report"
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --project=chromium",
+    "test:api": "npx playwright test --project=api",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:headed": "npx playwright test --project=chromium --headed",
+    "test:report": "npx playwright show-report",
+    "test:ci": "npx playwright test --reporter=line,html,junit --project=chromium --project=api",
+    "test:allure-generate": "npx allure generate --clean ./allure-results/ -o ./allure-report/ && npx allure open ./allure-report",
+    "prepare": "npx playwright install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.58.2",
-    "@types/node": "^25.5.0",
-    "allure-commandline": "^2.38.1",
-    "allure-playwright": "^3.6.0",
-    "dotenv": "^17.3.1",
-    "playwright": "^1.58.2",
-    "typescript": "^6.0.2"
+    "@playwright/test": "^1.62.0",
+    "@types/node": "^26.1.1",
+    "allure-commandline": "^2.43.0",
+    "allure-playwright": "^3.10.2",
+    "dotenv": "^17.4.2",
+    "typescript": "^7.0.2"
   }
 }

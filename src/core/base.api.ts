@@ -4,7 +4,7 @@ import { APIRequestContext, APIResponse, request } from "playwright/test";
 export default abstract class BaseAPI {
     protected baseUrl: string;
     protected timeout: number;
-    protected requestContext!: APIRequestContext;
+    public requestContext!: APIRequestContext;
 
     constructor(baseUrl: string, timeout: number = 30000) {
         this.baseUrl = baseUrl;
