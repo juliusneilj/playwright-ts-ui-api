@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { HomePage } from '@ui-pages';
+import { HomePage } from 'src/ui/automation-exercise/pages';
 
 test.describe('Automation Exercise Home Page', () => {
   let homePage: HomePage;
