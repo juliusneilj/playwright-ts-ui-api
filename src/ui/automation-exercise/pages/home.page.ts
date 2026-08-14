@@ -1,8 +1,8 @@
 import { BasePage } from "@core";
-import { HomePageLocators } from "@ui-locators";
 import { expect } from "@playwright/test";
 import { Page } from "@playwright/test";
-import ProductPage from "./product.page";
+import { HomePageLocators } from "@automation-exercise-locators";
+import { ProductPage } from "@automation-exercise-ui-pages";
 
 export default class HomePage extends BasePage {
 
@@ -10,13 +10,9 @@ export default class HomePage extends BasePage {
         const baseUrl = process.env.AUTOMATION_EXERCISE_BASE_URL || 'https://automationexercise.com';
         super(page, baseUrl);
     }
-    async init(): Promise<this> {
-        return this;
-    }
 
     async navigateTo(): Promise<void> {
         await this.page.goto(this.baseUrl);
-        await this.handlePopupsBeforeAction();
     }
 
     async verifyHomePage(): Promise<void> {
