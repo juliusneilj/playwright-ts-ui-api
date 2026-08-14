@@ -64,10 +64,7 @@ export default defineConfig({
     },
     {
       name: 'api',
-      testDir: './tests/api',
-      use: {
-        baseURL: process.env.POKEMON_API_BASE_URL
-      }
+      testDir: './tests/api'
     }
 
     /* Test against mobile viewports. */
