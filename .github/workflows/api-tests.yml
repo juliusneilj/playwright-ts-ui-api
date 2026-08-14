@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  ui-and-api-tests:
+  api-tests:
     timeout-minutes: 45
     runs-on: ubuntu-latest
 
