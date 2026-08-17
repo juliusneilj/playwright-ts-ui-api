@@ -1,5 +1,7 @@
 import { BaseAPI } from "@core";
 import { APIResponse } from "playwright/test";
+import { ProductsResponse, ProductsResponseSchema } from "@schema";
+import { validateResponse } from "@utils";
 
 export default class AutomationExerciseAPI extends BaseAPI {
     constructor() {
@@ -8,9 +10,12 @@ export default class AutomationExerciseAPI extends BaseAPI {
         super(baseUrl, timeout);
     }
 
-    
-
     public async getAllProductsList(): Promise<APIResponse> {
         return this.get('api/productsList');
+    }
+
+    public async getValidatedProductsList(): Promise<ProductsResponse> {
+        const response = await this.getAllProductsList();
+        return validateResponse(response, ProductsResponseSchema);
     }
 }
