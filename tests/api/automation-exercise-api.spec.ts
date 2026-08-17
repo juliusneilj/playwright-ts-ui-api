@@ -1,5 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@fixtures/api-clients.fixture';
+import { validateResponse } from '@utils';
+import { ProductsResponseSchema } from '@schema';
 
 /**
  * Automation Exercise API Test Suite
@@ -43,26 +45,11 @@ test.describe('Automation Exercise API - Products', () => {
     test.skip('should return product metadata in a valid response payload', async ({ automationExerciseApi }) => {
         try {
             const response = await automationExerciseApi.getAllProductsList();
-            expect(response.ok()).toBeTruthy();
-            const data = await response.json();
-
-            expect(Array.isArray(data.products)).toBeTruthy();
-            expect(data.products.length).toBeGreaterThan(0);
-
-            const firstProduct = data.products[0];
-            const normalizedPrice = String(firstProduct.price).replace(/[^\d.]/g, '');
-
-            expect(firstProduct).toHaveProperty('id');
-            expect(firstProduct).toHaveProperty('name');
-            expect(firstProduct).toHaveProperty('price');
-            expect(typeof firstProduct.name).toBe('string');
-            expect(normalizedPrice.length).toBeGreaterThan(0);
-            expect(Number(normalizedPrice)).toBeGreaterThan(0);
+            expect(response.status()).toBe(200);
+            validateResponse(response, ProductsResponseSchema);
         } catch (error) {
             console.error('Test failed to validate product metadata:', error);
             throw error;
         }
     });
-
-    // Test needs to be updated next PR.
 });
